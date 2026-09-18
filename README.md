@@ -1,1 +1,1 @@
-Might and Power Club Yard Card — Caulfield 19 September 2026. One phone per table. Host pin mpc19.
+Yard Card for Might and Power Club. Open https://github.com/psaundry/yard-card if Pages is still off.

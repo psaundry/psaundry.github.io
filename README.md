@@ -1,6 +1,5 @@
-# Might and Power Club
+Might and Power Club — Underwood Stakes Day recap.
 
-Photo story of Underwood Stakes Day, Caulfield, 19 September 2026.
+Live: https://psaundry.github.io/
 
-- Recap: https://psaundry.github.io/
-- Yard card: https://psaundry.github.io/yard.html
+Hard-refresh after updates (GitHub Pages caches images for a few minutes).

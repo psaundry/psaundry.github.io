@@ -195,12 +195,14 @@
     figure.shot {
       position: relative;
       overflow: hidden;
+      width: 100%;
       border-radius: var(--xl);
       outline: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
       outline-offset: -1px;
       background: var(--paper-2);
     }
-    figure.shot img { width: 100%; height: auto; display: block; aspect-ratio: 4 / 3; object-fit: cover; object-position: center 30%; }
+    figure.shot picture { display: block; width: 100%; }
+    figure.shot img { width: 100%; max-width: 100%; height: auto; display: block; aspect-ratio: 4 / 3; object-fit: cover; object-position: center 30%; }
     figcaption {
       position: static;
       background: var(--turf);

@@ -13,34 +13,46 @@
   const src = 'https://raw.githubusercontent.com/psaundry/psaundry.github.io/86b374f0cd3b96b2c6fc6116d47164dbe2bd9c12/index.html';
   const res = await fetch(src);
   let html = await res.text();
+
   html = html.replace(
-    '<article class="matt">',
-    '<article>'
+    '.people img {\n      width: 100%;\n      border-radius: var(--xl);',
+    '.people img {\n      width: 100%;\n      max-width: 100%;\n      height: auto;\n      display: block;\n      aspect-ratio: 3 / 2;\n      object-fit: cover;\n      object-position: center 18%;\n      border-radius: var(--xl);'
   );
   html = html.replace(
-    'Matt was with us representing the jockeys association',
-    'Matt was with us representing the Victorian Jockeys Association'
+    '.people {\n      margin-top: 2rem;\n      display: grid;\n      gap: 2.5rem;\n    }',
+    '.people {\n      margin-top: 2rem;\n      display: grid;\n      gap: 2.5rem 1.5rem;\n      align-items: start;\n    }\n    .people article { min-width: 0; }\n    .people img.troy { object-position: center 12%; }\n    .people img.will { object-position: center 42%; }'
   );
-  if (html.indexOf('Matt Hyland') !== -1 && html.indexOf('justhorseracing') === -1) {
-    html = html.replace(
-      '<h3>Matt Hyland</h3>',
-      '<img src="https://www.justhorseracing.com.au/wp-content/uploads/2019/07/Matt-Hyland-734x460.png" alt="Matt Hyland, Chief Executive of the Victorian Jockeys Association" width="734" height="460" loading="lazy" />\n          <h3>Matt Hyland</h3>'
-    );
-  }
-  if (html.indexOf('Troy Corstens, Head Trainer') === -1) {
-    html = html.replace(
-      '<h3>Will Larkin</h3>',
-      '<h3>Will Larkin</h3>'
-    );
-    html = html.replace(
-      'Troy couldn\u2019t make it; Will came up to speak.</p>\n        </article>',
-      'Troy couldn\u2019t make it; Will came up to speak.</p>\n        </article>\n        <article>\n          <img src="https://cdn.prism.horse/media/9b20dc84e10a4f8baca387c8f4478e85.png" alt="Troy Corstens, Head Trainer at Malua Racing" width="754" height="1024" loading="lazy" />\n          <h3>Troy Corstens</h3>\n          <p>Head trainer at <a href="https://www.maluaracing.com.au/our-people">Malua Racing</a>. Couldn\u2019t make the room \u2014 Will came up to speak \u2014 and Harry rode Bohemian Boy for the team in race 2.</p>\n        </article>'
-    );
-  }
+  html = html.replace('.matt { margin-top: 2.5rem; max-width: 40rem; }', '.matt { display: none; }');
+
+  const people = `<div class="people">
+        <article>
+          <img src="/day/harry.jpg?v=3" alt="Harry Coffey" width="900" height="600" loading="lazy" decoding="async" />
+          <h3>Harry Coffey</h3>
+          <p>Harry rode in race 2 on Bohemian Boy for Troy Corstens and Will Larkin. He didn’t get the chocolates — but it was a pleasure to have him in the room.</p>
+        </article>
+        <article>
+          <img class="will" src="/day/will.jpg?v=3" alt="Will Larkin of Malua Racing" width="900" height="600" loading="lazy" decoding="async" />
+          <h3>Will Larkin</h3>
+          <p>Will was in the room representing <a href="https://www.maluaracing.com.au/our-people">Malua Racing</a>. Goes without saying the boys would love to hear from you if you are looking for a share of a horse — <a href="https://www.maluaracing.com.au/ownership">maluaracing.com.au/ownership</a>.</p>
+        </article>
+        <article>
+          <img class="troy" src="https://cdn.prism.horse/media/9b20dc84e10a4f8baca387c8f4478e85.png" alt="Troy Corstens, Head Trainer at Malua Racing" width="900" height="600" loading="lazy" decoding="async" />
+          <h3>Troy Corstens</h3>
+          <p>Head trainer at <a href="https://www.maluaracing.com.au/our-people">Malua Racing</a>. Couldn’t make the room — Will came up to speak — and Harry rode Bohemian Boy for the team in race 2.</p>
+        </article>
+        <article>
+          <img src="https://www.justhorseracing.com.au/wp-content/uploads/2019/07/Matt-Hyland-734x460.png" alt="Matt Hyland, Chief Executive of the Victorian Jockeys Association" width="900" height="600" loading="lazy" decoding="async" />
+          <h3>Matt Hyland</h3>
+          <p>Matt was with us representing the Victorian Jockeys Association — son of legend Pat Hyland. The sort of presence that makes a race day feel like a race day.</p>
+        </article>
+      </div>`;
+
+  html = html.replace(/<div class="people">[\s\S]*?<article class="matt">[\s\S]*?<\/article>/, people);
+
   document.open();
   document.write(html);
   document.close();
-})().catch(function (err) {
+})().catch(function () {
   document.body.textContent = 'Could not load the recap.';
 });
 </script>

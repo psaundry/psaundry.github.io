@@ -230,9 +230,13 @@
       outline: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
       outline-offset: -1px;
     }
-    .people h3 { font-size: 1.65rem; letter-spacing: -0.02em; }
+    .people h3 { margin-top: 1rem; font-size: 1.65rem; letter-spacing: -0.02em; }
     .people p { margin-top: 0.75rem; font-size: 1.1875rem; line-height: 1.6; color: var(--ink-soft); }
-    .people h3 + p + h3 { margin-top: 2rem; }
+    .people a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: color-mix(in srgb, var(--crimson) 50%, transparent); }
+    .people a:hover { color: var(--crimson); }
+    .matt { margin-top: 2.5rem; max-width: 40rem; }
+    .matt h3 { font-size: 1.65rem; letter-spacing: -0.02em; }
+    .matt p { margin-top: 0.75rem; font-size: 1.1875rem; line-height: 1.6; color: var(--ink-soft); }
     .namesake {
       margin-top: 4rem;
       overflow: hidden;
@@ -295,7 +299,7 @@
       article h3 { font-size: 1.9rem; }
       figcaption { padding-left: 1.25rem; padding-right: 1.25rem; }
       figcaption .who { font-size: 1.2rem; }
-      .people { grid-template-columns: 2fr 3fr; align-items: start; }
+      .people { grid-template-columns: 1fr 1fr; align-items: start; }
       .namesake { grid-template-columns: 2fr 3fr; }
       .namesake img { height: 100%; max-height: none; }
       .namesake .copy, .thanks { padding: 2.5rem; }
@@ -551,16 +555,21 @@
       <p class="kicker muted">In the room</p>
       <h2>Personalities</h2>
       <div class="people">
-        <figure>
+        <article>
           <img src="/day/harry.jpg" alt="Harry Coffey" width="900" height="675" loading="lazy" />
-        </figure>
-        <div>
           <h3>Harry Coffey</h3>
-          <p>Harry rode in race 2 on Bohemian Boy for Troy Corstens and Will Larkin. Will came up to speak; Troy couldn’t make it. Harry didn’t get the chocolates — but it was a pleasure to have him in the room.</p>
-          <h3>Matt Hyland</h3>
-          <p>Matt was with us representing the jockeys association — son of legend Pat Hyland. The sort of presence that makes a race day feel like a race day.</p>
-        </div>
+          <p>Harry rode in race 2 on Bohemian Boy for Troy Corstens and Will Larkin. He didn’t get the chocolates — but it was a pleasure to have him in the room.</p>
+        </article>
+        <article>
+          <img src="/day/will.jpg" alt="Will Larkin of Malua Racing" width="608" height="380" loading="lazy" />
+          <h3>Will Larkin</h3>
+          <p>Will was in the room representing <a href="https://www.maluaracing.com.au/our-people">Malua Racing</a> — head trainer with Troy and Leon Corstens. Troy couldn’t make it; Will came up to speak.</p>
+        </article>
       </div>
+      <article class="matt">
+        <h3>Matt Hyland</h3>
+        <p>Matt was with us representing the jockeys association — son of legend Pat Hyland. The sort of presence that makes a race day feel like a race day.</p>
+      </article>
     </section>
 
     <section id="namesake" class="namesake">

@@ -1,1 +1,35 @@
-<placeholder>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Underwood Stakes Day · Might and Power Club</title>
+  <meta name="theme-color" content="#1E3D2F" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body>
+<script>
+(async function () {
+  const src = 'https://raw.githubusercontent.com/psaundry/psaundry.github.io/86b374f0cd3b96b2c6fc6116d47164dbe2bd9c12/index.html';
+  const res = await fetch(src);
+  let html = await res.text();
+  const oldMatt = `<article class="matt">
+        <h3>Matt Hyland</h3>
+        <p>Matt was with us representing the jockeys association — son of legend Pat Hyland. The sort of presence that makes a race day feel like a race day.</p>
+      </article>`;
+  const newMatt = `<article>
+          <img src="https://www.justhorseracing.com.au/wp-content/uploads/2019/07/Matt-Hyland-734x460.png" alt="Matt Hyland, Chief Executive of the Victorian Jockeys Association" width="734" height="460" loading="lazy" />
+          <h3>Matt Hyland</h3>
+          <p>Matt was with us representing the Victorian Jockeys Association — son of legend Pat Hyland. The sort of presence that makes a race day feel like a race day.</p>
+        </article>`;
+  html = html.replace('      </div>\n      ' + oldMatt, '        ' + newMatt + '\n      </div>');
+  html = html.replace(oldMatt, newMatt);
+  document.open();
+  document.write(html);
+  document.close();
+})().catch(function () {
+  document.body.innerHTML = '<p style="font-family:sans-serif;padding:2rem">Could not load the recap. Open <a href="https://github.com/psaundry/psaundry.github.io">the repo</a>.</p>';
+});
+</script>
+</body>
+</html>

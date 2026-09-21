@@ -28,26 +28,30 @@
         <article>
           <img src="/day/harry.jpg?v=3" alt="Harry Coffey" width="900" height="600" loading="lazy" decoding="async" />
           <h3>Harry Coffey</h3>
-          <p>Harry rode in race 2 on Bohemian Boy for Troy Corstens and Will Larkin. He didn’t get the chocolates — but it was a pleasure to have him in the room.</p>
+          <p>Harry rode in race 2 on Bohemian Boy for Troy Corstens and Will Larkin. He didn’t get the chocolates — but it was a pleasure to have the Swan Hill local in the room.</p>
         </article>
         <article>
           <img class="will" src="/day/will.jpg?v=3" alt="Will Larkin of Malua Racing" width="900" height="600" loading="lazy" decoding="async" />
           <h3>Will Larkin</h3>
-          <p>Will was in the room representing <a href="https://www.maluaracing.com.au/our-people">Malua Racing</a>. Goes without saying the boys would love to hear from you if you are looking for a share of a horse — <a href="https://www.maluaracing.com.au/ownership">maluaracing.com.au/ownership</a>.</p>
+          <p>Will was in the room representing <a href="https://www.maluaracing.com.au/our-people">Malua Racing</a> for head trainer Troy Corstens and his father Leon. Troy couldn’t make it, but I am sure we will see him at an M&amp;P function soon. It goes without saying Troy and Will are always looking for good owners — <a href="https://www.maluaracing.com.au/horse-available">maluaracing.com.au/horse-available</a>.</p>
         </article>
         <article>
           <img class="troy" src="https://cdn.prism.horse/media/9b20dc84e10a4f8baca387c8f4478e85.png" alt="Troy Corstens, Head Trainer at Malua Racing" width="900" height="600" loading="lazy" decoding="async" />
           <h3>Troy Corstens</h3>
-          <p>Head trainer at <a href="https://www.maluaracing.com.au/our-people">Malua Racing</a>. Couldn’t make the room — Will came up to speak — and Harry rode Bohemian Boy for the team in race 2.</p>
+          <p>Head trainer at <a href="https://www.maluaracing.com.au/our-people">Malua Racing</a> with his father Leon. Couldn’t make the room this time — Will came up to speak — and we will see him at an M&amp;P function soon.</p>
         </article>
         <article>
-          <img src="https://www.justhorseracing.com.au/wp-content/uploads/2019/07/Matt-Hyland-734x460.png" alt="Matt Hyland, Chief Executive of the Victorian Jockeys Association" width="900" height="600" loading="lazy" decoding="async" />
+          <img src="https://www.justhorseracing.com.au/wp-content/uploads/2019/07/Matt-Hyland-734x460.png" alt="Matt Hyland, CEO of the Victorian Jockeys Association" width="900" height="600" loading="lazy" decoding="async" />
           <h3>Matt Hyland</h3>
-          <p>Matt was with us representing the Victorian Jockeys Association — son of legend Pat Hyland. The sort of presence that makes a race day feel like a race day.</p>
+          <p>CEO of the Victorian Jockeys Association. The sort of presence that makes a race day feel like a race day. The Hyland name is synonymous with racing.</p>
         </article>
       </div>`;
 
   html = html.replace(/<div class="people">[\s\S]*?<article class="matt">[\s\S]*?<\/article>/, people);
+  html = html.replace(
+    'A special day for the club — at Caulfield, with Melbourne Racing Club.</p>',
+    'A special day for the club — at Caulfield, with Melbourne Racing Club.</p>\n      <p class="body">Best wishes to you all in the spring!</p>'
+  );
 
   document.open();
   document.write(html);

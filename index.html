@@ -13,19 +13,35 @@
   const src = 'https://raw.githubusercontent.com/psaundry/psaundry.github.io/86b374f0cd3b96b2c6fc6116d47164dbe2bd9c12/index.html';
   const res = await fetch(src);
   let html = await res.text();
-  const oldMatt = `<article class="matt">\n        <h3>Matt Hyland</h3>\n        <p>Matt was with us representing the jockeys association \u2014 son of legend Pat Hyland. The sort of presence that makes a race day feel like a race day.</p>\n      </article>`;
-  const newMatt = `<article>\n          <img src="https://www.justhorseracing.com.au/wp-content/uploads/2019/07/Matt-Hyland-734x460.png" alt="Matt Hyland, Chief Executive of the Victorian Jockeys Association" width="734" height="460" loading="lazy" />\n          <h3>Matt Hyland</h3>\n          <p>Matt was with us representing the Victorian Jockeys Association \u2014 son of legend Pat Hyland. The sort of presence that makes a race day feel like a race day.</p>\n        </article>`;
-  const willClose = `</p>\n        </article>\n      </div>\n      `;
-  const troy = `</p>\n        </article>\n        <article>\n          <img src="https://cdn.prism.horse/media/9b20dc84e10a4f8baca387c8f4478e85.png" alt="Troy Corstens, Head Trainer at Malua Racing" width="754" height="1024" loading="lazy" />\n          <h3>Troy Corstens</h3>\n          <p>Head trainer at <a href="https://www.maluaracing.com.au/our-people">Malua Racing</a> with Leon Corstens and Will Larkin. Troy couldn\u2019t make the room \u2014 Will came up to speak \u2014 but Harry rode Bohemian Boy for the team in race 2.</p>\n        </article>\n      </div>\n      `;
-  html = html.replace(oldMatt, newMatt);
-  if (html.indexOf('will.jpg') !== -1) {
-    html = html.replace(willClose, troy);
+  html = html.replace(
+    '<article class="matt">',
+    '<article>'
+  );
+  html = html.replace(
+    'Matt was with us representing the jockeys association',
+    'Matt was with us representing the Victorian Jockeys Association'
+  );
+  if (html.indexOf('Matt Hyland') !== -1 && html.indexOf('justhorseracing') === -1) {
+    html = html.replace(
+      '<h3>Matt Hyland</h3>',
+      '<img src="https://www.justhorseracing.com.au/wp-content/uploads/2019/07/Matt-Hyland-734x460.png" alt="Matt Hyland, Chief Executive of the Victorian Jockeys Association" width="734" height="460" loading="lazy" />\n          <h3>Matt Hyland</h3>'
+    );
+  }
+  if (html.indexOf('Troy Corstens, Head Trainer') === -1) {
+    html = html.replace(
+      '<h3>Will Larkin</h3>',
+      '<h3>Will Larkin</h3>'
+    );
+    html = html.replace(
+      'Troy couldn\u2019t make it; Will came up to speak.</p>\n        </article>',
+      'Troy couldn\u2019t make it; Will came up to speak.</p>\n        </article>\n        <article>\n          <img src="https://cdn.prism.horse/media/9b20dc84e10a4f8baca387c8f4478e85.png" alt="Troy Corstens, Head Trainer at Malua Racing" width="754" height="1024" loading="lazy" />\n          <h3>Troy Corstens</h3>\n          <p>Head trainer at <a href="https://www.maluaracing.com.au/our-people">Malua Racing</a>. Couldn\u2019t make the room \u2014 Will came up to speak \u2014 and Harry rode Bohemian Boy for the team in race 2.</p>\n        </article>'
+    );
   }
   document.open();
   document.write(html);
   document.close();
-})().catch(function () {
-  document.body.innerHTML = '<p style="font-family:sans-serif;padding:2rem">Could not load the recap.</p>';
+})().catch(function (err) {
+  document.body.textContent = 'Could not load the recap.';
 });
 </script>
 </body>
